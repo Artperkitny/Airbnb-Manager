@@ -1,0 +1,65 @@
+
+
+# Bleeding edge Django
+django==1.10.2
+
+# Configuration
+django-environ==0.4.0
+
+
+
+# Forms
+django-braces==1.10.0
+django-crispy-forms==1.6.1
+
+# Models
+django-model-utils==2.6
+
+# Images
+Pillow==3.4.2
+
+# For user registration, either via email or social
+# Well-built with regular release cycles!
+django-allauth==0.28.0
+
+
+# Python-PostgreSQL Database Adapter
+psycopg2==2.6.2
+
+# Unicode slugification
+awesome-slugify==1.6.5
+
+# Time zones support
+pytz==2016.7
+
+# Redis support
+django-redis==4.5.0
+redis>=2.10.5
+
+
+
+
+
+# Your custom requirements go here
+
+awesome-slugify==1.6.5
+Django==1.10.2
+django-allauth==0.28.0
+django-braces==1.10.0
+django-crispy-forms==1.6.1
+django-environ==0.4.0
+django-model-utils==2.6
+django-redis==4.5.0
+djangorestframework==3.5.3
+oauthlib==2.0.1
+Pillow==3.4.2
+psycopg2==2.6.2
+python-openid==2.2.5
+pytz==2016.7
+redis==2.10.5
+regex==2016.11.21
+requests==2.12.3
+requests-oauthlib==0.7.0
+six==1.10.0
+Unidecode==0.4.19
+

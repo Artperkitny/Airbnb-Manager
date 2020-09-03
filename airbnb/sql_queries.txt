@@ -1,0 +1,16 @@
+# Get all the bunk and name of guests arriving on given date
+SELECT l.name, c.full_name FROM calender_reservation c, listings_listing l WHERE c.date={date} AND c.start_date = c.date AND c.listing_id=l.id;
+
+# Number of occupied listings out of 27 total listings (+1 if Chalres included, +2 if Art and Zach)
+SELECT count(*) FROM calender_reservation c, listings_listing l WHERE c.date='{}'  AND c.listing_id=l.id AND c.available=FALSE;
+
+# Calculate occupancy percentage
+SELECT date, (SELECT count(available)) AS occupied, round((SELECT(count(available)::float)/27)*100)  AS occupancy FROM calender_reservation c, listings_listing l WHERE c.listing_id = l.id  AND date>='11-01-2016' AND date<'12-01-2016' AND available=FALSE GROUP BY date ORDER BY date;
+
+
+SELECT date, (SELECT count(available)) AS occupied, (SELECT count(*) FROM listings_listing WHERE c.date>=date_created AND is_airbnb=True), round((SELECT(count(available)::float))/(SELECT count(*) FROM listings_listing WHERE c.date>=date_created AND is_airbnb=True)*100)  AS occupancy FROM calender_reservation c, listings_listing l WHERE c.listing_id = l.id  AND date>='08-01-2016' AND date<'12-01-2016' AND available=FALSE AND date>=date_created GROUP BY date ORDER BY date;
+
+# Get amount owned for remainder of reservation
+SELECT full_name, payout_amount-paid_amount as Owed FROM calender_reservation WHERE date>='2016-12-01' AND payout_amount>paid_amount GROUP BY full_name, payout_amount, paid_amount;
+
+SELECT full_name, payout_amount-paid_amount as Owed, paid_amount, nights, start_date, start_date+nights AS end_date FROM calender_reservation WHERE date>='2016-12-01' AND date<='2017-1-31' AND payout_amount>paid_amount GROUP BY full_name, payout_amount, paid_amount, nights, start_date ORDER BY start_date;
